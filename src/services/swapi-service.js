@@ -47,7 +47,6 @@ export default class SwapiService {
   }
 
   _transformPlanet(planet) {
-    console.log(this._extractId(planet))
     return {
       id: this._extractId(planet),
       name: planet.name,
