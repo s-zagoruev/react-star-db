@@ -15,8 +15,20 @@ export default class RandomPlanet extends Component {
   }
 
   constructor(props) {
+    console.log('constructor')
     super(props)
+
+    //Bad practice! Constructor should not have side effects!
     this.updatePlanet()
+    this.interval = setInterval(this.updatePlanet, 15000)
+  }
+
+  componentDidMount() {
+    console.log('componentDidMount')
+  }
+
+  componentWillUnmount() {
+    console.log('componentWillUnmount')
   }
 
   onPlanetLoaded = (planet) => {
@@ -34,6 +46,7 @@ export default class RandomPlanet extends Component {
   }
 
   updatePlanet = () => {
+    console.log('update');
     const id = Math.floor(Math.random() * 25 + 2)
     this.swapiService
       .getPlanet(id)
@@ -42,6 +55,7 @@ export default class RandomPlanet extends Component {
   }
 
   render() {
+    console.log('render');
     const {planet, loading, error} = this.state
     const hasData = !(loading || error)
     const errorMessage = error ? <ErrorIndicator/> : null
