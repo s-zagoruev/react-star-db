@@ -20,7 +20,6 @@ export default class RandomPlanet extends Component {
   }
 
   componentWillUnmount() {
-    console.log('componentWillUnmount');
     clearInterval(this.interval)
   }
 
@@ -39,7 +38,6 @@ export default class RandomPlanet extends Component {
   }
 
   updatePlanet = () => {
-    console.log('updatePlanet');
     const id = Math.floor(Math.random() * 25 + 2)
     this.swapiService
       .getPlanet(id)
