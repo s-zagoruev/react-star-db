@@ -1,11 +1,16 @@
 import React, {Component} from 'react'
 import Header from '../header'
 import ErrorIndicator from "../error-indicator"
-import SwapiService from "../../services/swapi-service";
-import Row from "../row";
-import ItemDetails, {Record} from "../item-details";
+import SwapiService from "../../services/swapi-service"
 import './app.css'
-import ItemList from "../item-list";
+import {
+  PersonList,
+  PlanetList,
+  StarshipList,
+  PersonDetails,
+  PlanetDetails,
+  StarshipDetails
+} from "../sw-components"
 
 export default class App extends Component {
 
@@ -34,37 +39,25 @@ export default class App extends Component {
       return <ErrorIndicator/>
     }
 
-    const {getPerson, getStarship, getAllPeople, getAllPlanets} = this.swapiService
-
-    const personDetails = (
-      <ItemDetails
-        itemId={11}
-        getData={getPerson}
-        getImageUrl={this.swapiService.getPersonImage}>
-        <Record field="gender" label="Gender"/>
-        <Record field="eyeColor" label="Eye color"/>
-      </ItemDetails>
-    )
-    const starshipDetails = (
-      <ItemDetails
-        itemId={5}
-        getData={getStarship}
-        getImageUrl={this.swapiService.getStarshipImage}>
-        <Record field="model" label="Model"/>
-        <Record field="length" label="Length"/>
-        <Record field="costInCredits" label="Cost"/>
-      </ItemDetails>
-    )
-
     return (
       <div className="app">
         <Header/>
 
-        {/*<Row left={personDetails} right={starshipDetails}/>*/}
+        <PersonDetails itemId={5}/>
+        <PlanetDetails itemId={3}/>
+        <StarshipDetails itemId={5}/>
 
-        <ItemList getData={getAllPeople} onItemSelected={() => { alert('Selected') }}>
-          {({name}) => <span>{name}</span>}
-        </ItemList>
+       <PersonList>
+         {({name}) => <span>{name}</span>}
+       </PersonList>
+
+       <PlanetList>
+         {({name}) => <span>{name}</span>}
+       </PlanetList>
+
+       <StarshipList>
+         {({name}) => <span>{name}</span>}
+       </StarshipList>
 
       </div>
     )
