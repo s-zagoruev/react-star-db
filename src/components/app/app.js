@@ -5,6 +5,7 @@ import SwapiService from "../../services/swapi-service";
 import Row from "../row";
 import ItemDetails, {Record} from "../item-details";
 import './app.css'
+import ItemList from "../item-list";
 
 export default class App extends Component {
 
@@ -33,7 +34,8 @@ export default class App extends Component {
       return <ErrorIndicator/>
     }
 
-    const {getPerson, getStarship} = this.swapiService
+    const {getPerson, getStarship, getAllPeople, getAllPlanets} = this.swapiService
+
     const personDetails = (
       <ItemDetails
         itemId={11}
@@ -58,7 +60,11 @@ export default class App extends Component {
       <div className="app">
         <Header/>
 
-        <Row left={personDetails} right={starshipDetails}/>
+        {/*<Row left={personDetails} right={starshipDetails}/>*/}
+
+        <ItemList getData={getAllPeople} onItemSelected={() => { alert('Selected') }}>
+          {({name}) => <span>{name}</span>}
+        </ItemList>
 
       </div>
     )
