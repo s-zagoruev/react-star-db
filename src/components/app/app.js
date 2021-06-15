@@ -1,6 +1,5 @@
 import React, {Component} from 'react'
 import Header from '../header'
-/*import RandomPlanet from '../random-planet'*/
 import ErrorIndicator from "../error-indicator"
 import SwapiService from "../../services/swapi-service";
 import Row from "../row";
@@ -34,8 +33,6 @@ export default class App extends Component {
       return <ErrorIndicator/>
     }
 
-    /*const randomPlanet = this.state.showRandomPlanet ? <RandomPlanet/> : null*/
-
     const {getPerson, getStarship} = this.swapiService
     const personDetails = (
       <ItemDetails
@@ -60,12 +57,6 @@ export default class App extends Component {
     return (
       <div className="app">
         <Header/>
-        {/*{randomPlanet}
-        <button
-          className="toggle-planet btn btn-warning btn-lg"
-          onClick={this.toggleRandomPlanet}>
-          Toggle Random Planet
-        </button>*/}
 
         <Row left={personDetails} right={starshipDetails}/>
 
