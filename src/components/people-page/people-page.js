@@ -2,9 +2,9 @@ import React, {Component} from 'react'
 import ItemList from '../item-list'
 import ItemDetails from '../item-details'
 import ErrorIndicator from '../error-indicator'
-import SwapiService from "../../services/swapi-service";
-import Row from "../row";
-import ErrorBoundary from "../error-boundary";
+import SwapiService from "../../services/swapi-service"
+import Row from "../row"
+import ErrorBoundary from "../error-boundary"
 
 import './people-page.css'
 

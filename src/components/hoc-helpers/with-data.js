@@ -1,5 +1,5 @@
-import {Component} from "react";
-import Spinner from "../spinner";
+import {Component} from "react"
+import Spinner from "../spinner"
 
 const withData = (View, getData) => {
   return class extends Component {
