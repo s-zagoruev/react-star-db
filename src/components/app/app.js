@@ -2,7 +2,9 @@ import React, {Component} from 'react'
 import Header from '../header'
 import ErrorIndicator from "../error-indicator"
 import SwapiService from "../../services/swapi-service"
-import './app.css'
+import DummySwapiService from "../../services/dummy-swapi-service"
+import ErrorBoundary from "../error-boundary"
+import {SwapiServiceProvider} from "../swapi-service-context"
 import {
   PersonList,
   PlanetList,
@@ -11,10 +13,11 @@ import {
   PlanetDetails,
   StarshipDetails
 } from "../sw-components"
+import './app.css'
 
 export default class App extends Component {
 
-  swapiService = new SwapiService()
+  swapiService = new DummySwapiService()
 
   state = {
     showRandomPlanet: true,
@@ -40,20 +43,25 @@ export default class App extends Component {
     }
 
     return (
-      <div className="app">
-        <Header/>
+      <ErrorBoundary>
+        <SwapiServiceProvider value={this.swapiService}>
+          <div className="stardb-app">
+            <Header/>
 
-        <PersonDetails itemId={5}/>
-        <PlanetDetails itemId={3}/>
-        <StarshipDetails itemId={5}/>
+            <PersonDetails itemId={5}/>
 
-       <PersonList/>
+            <PlanetDetails itemId={3}/>
 
-       <PlanetList />
+            <StarshipDetails itemId={5}/>
 
-       <StarshipList/>
+            <PersonList/>
 
-      </div>
+            <PlanetList/>
+
+            <StarshipList/>
+          </div>
+        </SwapiServiceProvider>
+      </ErrorBoundary>
     )
   }
 }
