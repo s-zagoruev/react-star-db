@@ -2,7 +2,6 @@ import React, {Component} from 'react'
 import Header from '../header'
 import ErrorIndicator from "../error-indicator"
 import SwapiService from "../../services/swapi-service"
-import DummySwapiService from "../../services/dummy-swapi-service"
 import ErrorBoundary from "../error-boundary"
 import {SwapiServiceProvider} from "../swapi-service-context"
 import {
@@ -17,7 +16,7 @@ import './app.css'
 
 export default class App extends Component {
 
-  swapiService = new DummySwapiService()
+  swapiService = new SwapiService()
 
   state = {
     showRandomPlanet: true,
