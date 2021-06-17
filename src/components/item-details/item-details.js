@@ -43,8 +43,10 @@ export default class ItemDetails extends Component {
   }
 
   componentDidUpdate(prevProps) {
-    if (this.props.itemId !== prevProps.itemId) {
-        this.updateItem()
+    if (this.props.itemId !== prevProps.itemId ||
+      this.props.getData !== prevProps.getData ||
+      this.props.getImageUrl !== prevProps.getImageUrl) {
+      this.updateItem()
     }
   }
 
@@ -52,7 +54,7 @@ export default class ItemDetails extends Component {
     const {item, image} = this.state
 
     if (!item) {
-        return <span>Select item from a list</span>
+      return <span>Select item from a list</span>
     }
 
     const {name} = this.state.item
