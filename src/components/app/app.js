@@ -12,7 +12,7 @@ export default class App extends Component {
 
   state = {
     hasError: false,
-    swapiService: new SwapiService(),
+    swapiService: new DummySwapiService(),
   }
 
   componentDidCatch(error, errorInfo) {
