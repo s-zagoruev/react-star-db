@@ -25,4 +25,10 @@ const ItemList = (props) => {
   )
 }
 
+ItemList.defaultProps = {
+  onItemSelected: () => {
+    console.log('Callback from defaultProps called');
+  }
+}
+
 export default ItemList
