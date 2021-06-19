@@ -1,5 +1,6 @@
 import React from 'react'
 import './item-list.css'
+import PropTypes from "prop-types"
 
 const ItemList = (props) => {
 
@@ -29,6 +30,12 @@ ItemList.defaultProps = {
   onItemSelected: () => {
     console.log('Callback from defaultProps called');
   }
+}
+
+ItemList.propTypes = {
+  onItemSelected: PropTypes.func,
+  data: PropTypes.arrayOf(PropTypes.object).isRequired,
+  children: PropTypes.func.isRequired
 }
 
 export default ItemList
