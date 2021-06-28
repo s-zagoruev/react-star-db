@@ -8,13 +8,12 @@ export default class DummySwapiService {
       birthYear: 'long ago',
       eyeColor: 'dark brown'
     },
-
     {
       id: 2,
       name: 'Frodo Baggins [TEST DATA]',
       gender: 'male',
       birthYear: 'long ago',
-      eyeColor: 'dark brown'
+      eyeColor: 'light brown'
     }
   ];
 
@@ -53,24 +52,24 @@ export default class DummySwapiService {
     return this._people;
   };
 
-  getPerson = async () => {
-    return this._people[0];
+  getPerson = async (id) => {
+    return this._people.find(elem => elem.id === id);
   };
 
   getAllPlanets = async () => {
     return this._planets;
   };
 
-  getPlanet = async () => {
-    return this._planets[0]
+  getPlanet = async (id) => {
+    return this._planets.find(planet => planet.id === id);
   };
 
   getAllStarships = async () => {
     return this._starships;
   };
 
-  getStarship = async () => {
-    return this._starships[0];
+  getStarship = async (id) => {
+    return this._starships.find(starship => starship.id === id);
   };
 
   getPersonImage = () => {
